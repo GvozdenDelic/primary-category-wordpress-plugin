@@ -39,20 +39,20 @@ function primary_category_meta_box_callback($post) {
         $categories = get_the_category($post->ID);
     }
     
-    if($categories) { 
+    if($categories) {
+        // If a post is assigned to only one category, that category is marked as primary
         if (count($categories) == 1) {
             $primary_category = $categories[0]->term_id;
         }
         
         echo '<select name="primary_category" data-post-type="' . $post->post_type .'">';
-
-        foreach ($categories as $category) {
-            echo '<option value="' . esc_attr($category->term_id) . '" ' . selected($primary_category, $category->term_id, false) . '>' . esc_html($category->name) . '</option>';
-        }
-
+            foreach ($categories as $category) {
+                // Added escaping attributes and HTML for better security
+                echo '<option value="' . esc_attr($category->term_id) . '" ' . selected($primary_category, $category->term_id, false) . '>' . esc_html($category->name) . '</option>';
+            }
         echo '</select>';
     } else {
-        echo '<select name="primary_category" disabled><option>Please, select at least one category.</option></select>';
+        echo '<select name="primary_category" disabled><option>'.__( 'Please, select at least one category', 'primary-category-plugin').'</option></select>';
     }
 }
 
@@ -63,13 +63,18 @@ function primary_category_save_meta_box($post_id) {
 }
 add_action('save_post', 'primary_category_save_meta_box');
 
-function enqueue_primary_category_script($hook) {
-    if ($hook != 'post.php' && $hook != 'post-new.php') {
-        return;
-    }
+/* I added frontend JS to handle updating primary categories list with available categories *
+* I also added a CSS file. Styles are based on category styles from "twentytwentyfour" theme */
+function enqueue_primary_category_script() {
     wp_enqueue_script('primary-category-js', plugins_url('js/primary-category.js', __FILE__), false, true);
 }
 add_action('admin_enqueue_scripts', 'enqueue_primary_category_script');
+
+// I used 'wp_enqueue_scripts' action here, because CSS is needed on frontend, while 'primary-category-js' is only needed in backend
+function wpdocs_theme_name_scripts() {
+	wp_enqueue_style( 'primary-category-css', plugins_url('css/primary-category.css?'. date('l jS \of F Y h:i:s A'), __FILE__) );
+}
+add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
 
 function register_primary_category_page_template($templates) {
     $templates['templates/page-category-primary.php'] = 'Primary Category Template';
