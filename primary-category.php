@@ -72,7 +72,7 @@ add_action('admin_enqueue_scripts', 'enqueue_primary_category_script');
 
 // I used 'wp_enqueue_scripts' action here, because CSS is needed on frontend, while 'primary-category-js' is only needed in backend
 function wpdocs_theme_name_scripts() {
-	wp_enqueue_style( 'primary-category-css', plugins_url('css/primary-category.css?'. date('l jS \of F Y h:i:s A'), __FILE__) );
+	wp_enqueue_style( 'primary-category-css', plugins_url('css/primary-category.css', __FILE__) );
 }
 add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
 
