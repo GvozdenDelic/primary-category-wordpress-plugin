@@ -1,4 +1,4 @@
-This Wordpress plugin is entended to add "Primary Category" feature on category posts and custom posts.
+This Wordpress plugin is intended to add "Primary Category" feature on category posts and custom posts.
 
 Primary Category plugin time log:
 
