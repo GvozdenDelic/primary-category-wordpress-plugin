@@ -29,9 +29,7 @@ Javascript logic is the same as in the backend file: for regular posts, categori
 
 1h - Creating a page template for primary categories
 In my admin panel, I created "Primary category page", however I didn't see the template available in the page templates dropdown yet. I had to use filters"theme_page_templates" and "template_include" to include it. It worked great and now I have published the page.
-At this point, my primary category template looks like this:
-<?php/*** Template Name: Category Primary Template*/
-echo 'test';?>
+At this point, my primary category template only contains <?php echo "test"; ?>
 When visiting the page I only saw the text "test", which means that the correct template is being loaded. 
 My local URL for a category with name "Cool Category" looks like this: http://localhost/10up/primary-category-page/?primary_category=Cool%20Category
 
