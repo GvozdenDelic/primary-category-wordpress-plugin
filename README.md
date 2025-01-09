@@ -37,7 +37,7 @@ Javascript logic is the same as in the backend file: for regular posts, categori
 In my admin panel, I created "Primary category page", however I didn't see the template available in the page templates dropdown yet. I had to use filters"theme_page_templates" and "template_include" to include it. It worked great and now I have published the page.
 At this point, my primary category template only contains <?php echo "test"; ?>
 When visiting the page I only saw the text "test", which means that the correct template is being loaded. 
-My local URL for a category with name "Cool Category" looks like this: http://localhost/10up/primary-category-page/?primary_category=Cool%20Category
+My local URL for a category with name "Cool Category" looks like this: http://localhost/site/primary-category-page/?primary_category=Cool%20Category
 
 Next step would be to edit the template and query posts from a primary category based on query var "primary_category_id"
 
@@ -50,7 +50,7 @@ Querying posts worked great for category post type, however when I tested with c
 I am now able to reach the category, however, WP_Query doesn't have posts yet even though I have assigned portfolios.
 The issue was in $args of WP_Query: post types should be merged array of 'post' and custom post types.
 With URL like this, I was now able to see list of posts assigned to a primary category: 
-http://localhost/10up/primary-category-page/?primary_category=Websites&type=portfolio_category
+http://localhost/site/primary-category-page/?primary_category=Websites&type=portfolio_category
 
 2h - Testing
 
