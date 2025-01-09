@@ -4,7 +4,7 @@ Primary Category plugin time log:
 
 2h - Planning
 
-Carefully reading the requirements and making a plan. In this phase I make sure that I have understood the requirements and if needed, ask questions to further clarify the requirements or decide the best solution if there are multiple approaches.
+Reading the requirements and creating a plan. In this phase I make sure that I have understood the requirements and if needed, ask questions to further clarify the requirements or decide the best solution if there are multiple approaches.
 
 My plan is to create a new meta field on posts and custom posts for the primary category.
 Primary category can be selected via dropdown from an array of categories that the post is assigned to. It means that any update to the post category assignment should be reflected on "primary category" meta too (assigning a post to another category should asynchronously update the "primary category" array). I am trying to predict edge case scenarios: 
